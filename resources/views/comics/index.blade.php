@@ -3,6 +3,13 @@
 @section('content')
 
   <table class="k_table container">
+
+    @if(session('deleted_product'))
+    <div class="alert alert-warning" role="alert">
+      {{ session('deleted_product')}}
+    @endif
+    
+    </div>
     <thead>
       <tr>
         <th class="k_head">ID</th>
@@ -21,6 +28,17 @@
             <td>
                 <a href="{{ route( 'comics.show', $comic->id ) }}" class="btn btn-primary k_button">SHOW</a>
                 <a href="{{ route( 'comics.edit', $comic->id ) }}" class="btn btn-warning k_button">EDIT</a>
+
+                <form class="d-inline" 
+                onsubmit="return confirm('Sicuro di cancellare {{ $comic->title}}?')"
+                action="{{ route('comics.destroy', $comic)}}" method="POST">
+                @csrf
+                @method('DELETE')
+
+                <button type="submit" class="btn btn-danger k_button">DELETE</button>
+
+                </form>
+              
             </td>
           </tr>
         @endforeach
