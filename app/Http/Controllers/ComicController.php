@@ -36,7 +36,8 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        dd($data);
     }
 
     /**
@@ -45,8 +46,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Comic $comic)
+    public function show($id)
     {
+        $comic = Comic::find($id);
         return view( 'comics.show', compact('comic') );
     }
 

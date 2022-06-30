@@ -9,6 +9,8 @@
 
             <li><a class="{{ Route::currentRouteName() === 'comics' ? 'active' : ''}}" href="{{ route('comics.index')}}">Comics</a></li>
 
+            <li><a class="{{ Route::currentRouteName() === 'comics' ? 'active' : ''}}" href="{{ route('comics.create')}}">Post</a></li>
+
           </ul>
         </nav>
       
