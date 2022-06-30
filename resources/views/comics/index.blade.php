@@ -20,7 +20,7 @@
             <td> {{$comic->type}}</td>
             <td>
                 <a href="{{ route( 'comics.show', $comic->id ) }}" class="btn btn-primary k_button">SHOW</a>
-                <a href="#" class="btn btn-warning k_button">EDIT</a>
+                <a href="{{ route( 'comics.edit', $comic->id ) }}" class="btn btn-warning k_button">EDIT</a>
             </td>
           </tr>
         @endforeach

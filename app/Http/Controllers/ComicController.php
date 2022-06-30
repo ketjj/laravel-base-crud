@@ -69,7 +69,9 @@ class ComicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comic = Comic::find($id);
+        return view('comics.edit', compact('comic'));
+        
     }
 
     /**
@@ -79,18 +81,26 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
-    }
+        $data = $request->all();
+        if($comic->title != $data['title']){
+            $data['slug'] = $this->createSlug($data['title']);
+        }
+       $data['slug'] = $comic->slug;
 
+
+       $comic->update($data);
+       return redirect()->route('comics.show', $comic);
+    }
+     
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
         //
     }
