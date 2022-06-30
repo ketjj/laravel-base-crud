@@ -6,8 +6,8 @@
   <form action="{{ route('comics.store')}}" method="POST">
     @csrf
     <div class="form-group my-3">
-      <label for="name" class="my-2" >Nome Comic</label>
-      <input type="text" class="form-control" name="name" placeholder="Nome Comic">
+      <label for="title" class="my-2" >Nome Comic</label>
+      <input type="text" class="form-control" name="title" placeholder="Nome Comic">
       
     </div>
     <div class="form-group my-3">

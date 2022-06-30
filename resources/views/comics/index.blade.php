@@ -5,6 +5,7 @@
   <table class="k_table container">
     <thead>
       <tr>
+        <th class="k_head">ID</th>
         <th class="k_head">Title</th>
         <th class="k_head">Type</th>
         <th class="k_head">Actions</th>
@@ -14,13 +15,12 @@
 
         @foreach ($comics as $comic)
         <tr>
+            <td> {{$comic->id}}</td>
             <td> {{$comic->title}}</td>
             <td> {{$comic->type}}</td>
             <td>
                 <a href="{{ route( 'comics.show', $comic->id ) }}" class="btn btn-primary k_button">SHOW</a>
-                <a href="# " class="btn btn-warning k_button">EDIT</a>
-                {{-- per poter passare l'evento del delete devo usare un form, contenente solo il tasto --}}
-
+                <a href="#" class="btn btn-warning k_button">EDIT</a>
             </td>
           </tr>
         @endforeach

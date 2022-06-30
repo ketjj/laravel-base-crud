@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comic;
+use Illuminate\Support\Str;
 
 class ComicController extends Controller
 {
@@ -37,7 +38,15 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        dd($data);
+        // dd($data);
+        //  $new_comic->slug = Str::slug($data['title'], '-');
+        $data['slug'] = $this->createSlug($data['title']);
+        $new_comic = new Comic();
+        // dd($new_comic);
+        $new_comic->fill($data);
+        $new_comic->save();
+
+        return redirect()->route('comics.show', $new_comic);
     }
 
     /**
@@ -84,5 +93,16 @@ class ComicController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+
+    // CREARE LA FUNZIONE PER LO SLUG
+    private function createSlug($str){
+        $slug = Str::slug($str, '-');
+        $cont_slug = Comic::where('slug', $slug)->first();
+        if($cont_slug){
+            $slug = $cont_slug->slug. "-" . rand(2000, 20000);
+        }
+        return $slug;
     }
 }
