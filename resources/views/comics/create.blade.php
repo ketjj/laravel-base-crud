@@ -20,7 +20,8 @@
     @csrf
     <div class="form-group my-3">
       <label for="title" class="my-2" >Nome Comic</label>
-      <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="Nome Comic">
+      <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="Nome Comic"
+      value="{{ old('title') }}">
       @error('title')
        <div class="custom_error">{{ $message}}</div>
       @enderror
@@ -28,7 +29,8 @@
 
     <div class="form-group my-3">
       <label for="type" class="my-2">Tipo Comic</label>
-      <input type="text" name="type" class="form-control @error('type') is-invalid @enderror" placeholder="Tipo Comic">
+      <input type="text" name="type" class="form-control @error('type') is-invalid @enderror" placeholder="Tipo Comic"
+      value="{{ old('type') }}">
       @error('type')
       <div class="custom_error">{{ $message}}</div>
      @enderror
@@ -36,7 +38,8 @@
 
     <div class="form-group my-3">
       <label for="image" class="my-2">URL immagine</label>
-      <input type="text" name="image" class="form-control @error('image') is-invalid @enderror" placeholder="URL immagine">
+      <input type="text" name="image" class="form-control @error('image') is-invalid @enderror" placeholder="URL immagine"
+      value="{{ old('image') }}">
       @error('image')
       <div class="custom_error">{{ $message}}</div>
      @enderror
