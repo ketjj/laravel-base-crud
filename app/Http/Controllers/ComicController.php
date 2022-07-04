@@ -37,11 +37,18 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+         'title' => 'required|max:50|min:3',
+         'image' => 'required|max:255|min:10',
+         'type' => 'required|max:50|min:3'
+        ]);
+        
         $data = $request->all();
         // dd($data);
         //  $new_comic->slug = Str::slug($data['title'], '-');
-        $data['slug'] = $this->createSlug($data['title']);
         $new_comic = new Comic();
+        $data['slug'] = $this->createSlug($data['title']);
         // dd($new_comic);
         $new_comic->fill($data);
         $new_comic->save();

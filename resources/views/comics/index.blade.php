@@ -8,6 +8,8 @@
     <div class="alert alert-warning" role="alert">
       {{ session('deleted_product')}}
     @endif
+
+    
     
     </div>
     <thead>
